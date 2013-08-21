@@ -1,0 +1,536 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		773E517F17B52E050087BC05 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773E517E17B52E050087BC05 /* Cocoa.framework */; };
+		773E518917B52E050087BC05 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773E518717B52E050087BC05 /* InfoPlist.strings */; };
+		773E518B17B52E050087BC05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E518A17B52E050087BC05 /* main.m */; };
+		773E518F17B52E050087BC05 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 773E518D17B52E050087BC05 /* Credits.rtf */; };
+		773E519217B52E050087BC05 /* RZPathDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E519117B52E050087BC05 /* RZPathDocument.m */; };
+		773E519517B52E050087BC05 /* RZPathDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 773E519317B52E050087BC05 /* RZPathDocument.xib */; };
+		773E519817B52E060087BC05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 773E519617B52E060087BC05 /* MainMenu.xib */; };
+		773E51A017B52E060087BC05 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773E519F17B52E060087BC05 /* SenTestingKit.framework */; };
+		773E51A117B52E060087BC05 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773E517E17B52E050087BC05 /* Cocoa.framework */; };
+		773E51A917B52E060087BC05 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773E51A717B52E060087BC05 /* InfoPlist.strings */; };
+		773E51AC17B52E060087BC05 /* RZPathExporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E51AB17B52E060087BC05 /* RZPathExporterTests.m */; };
+		773E51B817B52F020087BC05 /* RZEditPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E51B717B52F020087BC05 /* RZEditPathViewController.m */; };
+		773E51BC17B53CEB0087BC05 /* RZZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E51BB17B53CEB0087BC05 /* RZZoomingScrollView.m */; };
+		773E51BF17B548600087BC05 /* RZDrawPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E51BE17B548600087BC05 /* RZDrawPathView.m */; };
+		773E51C317B5690E0087BC05 /* NSImage+BestFitGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E51C217B5690E0087BC05 /* NSImage+BestFitGeometry.m */; };
+		773E51CA17B586780087BC05 /* RZPathExporterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E51C917B586780087BC05 /* RZPathExporterAppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		773E51A217B52E060087BC05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 773E517317B52E050087BC05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 773E517A17B52E050087BC05;
+			remoteInfo = RZPathExporter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		773E517B17B52E050087BC05 /* RZPathExporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RZPathExporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		773E517E17B52E050087BC05 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		773E518117B52E050087BC05 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		773E518217B52E050087BC05 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		773E518317B52E050087BC05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		773E518617B52E050087BC05 /* RZPathExporter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RZPathExporter-Info.plist"; sourceTree = "<group>"; };
+		773E518817B52E050087BC05 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		773E518A17B52E050087BC05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		773E518C17B52E050087BC05 /* RZPathExporter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RZPathExporter-Prefix.pch"; sourceTree = "<group>"; };
+		773E518E17B52E050087BC05 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		773E519017B52E050087BC05 /* RZPathDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZPathDocument.h; sourceTree = "<group>"; };
+		773E519117B52E050087BC05 /* RZPathDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZPathDocument.m; sourceTree = "<group>"; };
+		773E519417B52E050087BC05 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RZPathDocument.xib; sourceTree = "<group>"; };
+		773E519717B52E060087BC05 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		773E519E17B52E060087BC05 /* RZPathExporterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RZPathExporterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		773E519F17B52E060087BC05 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		773E51A617B52E060087BC05 /* RZPathExporterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RZPathExporterTests-Info.plist"; sourceTree = "<group>"; };
+		773E51A817B52E060087BC05 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		773E51AA17B52E060087BC05 /* RZPathExporterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZPathExporterTests.h; sourceTree = "<group>"; };
+		773E51AB17B52E060087BC05 /* RZPathExporterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZPathExporterTests.m; sourceTree = "<group>"; };
+		773E51B617B52F020087BC05 /* RZEditPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RZEditPathViewController.h; path = Controllers/RZEditPathViewController.h; sourceTree = "<group>"; };
+		773E51B717B52F020087BC05 /* RZEditPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RZEditPathViewController.m; path = Controllers/RZEditPathViewController.m; sourceTree = "<group>"; };
+		773E51BA17B53CEB0087BC05 /* RZZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RZZoomingScrollView.h; path = Views/RZZoomingScrollView.h; sourceTree = "<group>"; };
+		773E51BB17B53CEB0087BC05 /* RZZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RZZoomingScrollView.m; path = Views/RZZoomingScrollView.m; sourceTree = "<group>"; };
+		773E51BD17B548600087BC05 /* RZDrawPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RZDrawPathView.h; path = Views/RZDrawPathView.h; sourceTree = "<group>"; };
+		773E51BE17B548600087BC05 /* RZDrawPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RZDrawPathView.m; path = Views/RZDrawPathView.m; sourceTree = "<group>"; };
+		773E51C117B5690E0087BC05 /* NSImage+BestFitGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+BestFitGeometry.h"; path = "Utils/NSImage+BestFitGeometry.h"; sourceTree = "<group>"; };
+		773E51C217B5690E0087BC05 /* NSImage+BestFitGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+BestFitGeometry.m"; path = "Utils/NSImage+BestFitGeometry.m"; sourceTree = "<group>"; };
+		773E51C417B57D6D0087BC05 /* GraphicsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphicsUtils.h; path = Utils/GraphicsUtils.h; sourceTree = "<group>"; };
+		773E51C817B586770087BC05 /* RZPathExporterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZPathExporterAppDelegate.h; sourceTree = "<group>"; };
+		773E51C917B586780087BC05 /* RZPathExporterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZPathExporterAppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		773E517817B52E050087BC05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773E517F17B52E050087BC05 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		773E519A17B52E060087BC05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773E51A017B52E060087BC05 /* SenTestingKit.framework in Frameworks */,
+				773E51A117B52E060087BC05 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		773E517217B52E050087BC05 = {
+			isa = PBXGroup;
+			children = (
+				773E518417B52E050087BC05 /* RZPathExporter */,
+				773E51A417B52E060087BC05 /* RZPathExporterTests */,
+				773E517D17B52E050087BC05 /* Frameworks */,
+				773E517C17B52E050087BC05 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		773E517C17B52E050087BC05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				773E517B17B52E050087BC05 /* RZPathExporter.app */,
+				773E519E17B52E060087BC05 /* RZPathExporterTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		773E517D17B52E050087BC05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				773E517E17B52E050087BC05 /* Cocoa.framework */,
+				773E519F17B52E060087BC05 /* SenTestingKit.framework */,
+				773E518017B52E050087BC05 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		773E518017B52E050087BC05 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				773E518117B52E050087BC05 /* AppKit.framework */,
+				773E518217B52E050087BC05 /* CoreData.framework */,
+				773E518317B52E050087BC05 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		773E518417B52E050087BC05 /* RZPathExporter */ = {
+			isa = PBXGroup;
+			children = (
+				773E51C817B586770087BC05 /* RZPathExporterAppDelegate.h */,
+				773E51C917B586780087BC05 /* RZPathExporterAppDelegate.m */,
+				773E519017B52E050087BC05 /* RZPathDocument.h */,
+				773E519117B52E050087BC05 /* RZPathDocument.m */,
+				773E519317B52E050087BC05 /* RZPathDocument.xib */,
+				773E519617B52E060087BC05 /* MainMenu.xib */,
+				773E51B917B53CCF0087BC05 /* Views */,
+				773E51B517B52ECC0087BC05 /* Controllers */,
+				773E51C017B568E20087BC05 /* Utils */,
+				773E518517B52E050087BC05 /* Supporting Files */,
+			);
+			path = RZPathExporter;
+			sourceTree = "<group>";
+		};
+		773E518517B52E050087BC05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				773E518617B52E050087BC05 /* RZPathExporter-Info.plist */,
+				773E518717B52E050087BC05 /* InfoPlist.strings */,
+				773E518A17B52E050087BC05 /* main.m */,
+				773E518C17B52E050087BC05 /* RZPathExporter-Prefix.pch */,
+				773E518D17B52E050087BC05 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		773E51A417B52E060087BC05 /* RZPathExporterTests */ = {
+			isa = PBXGroup;
+			children = (
+				773E51AA17B52E060087BC05 /* RZPathExporterTests.h */,
+				773E51AB17B52E060087BC05 /* RZPathExporterTests.m */,
+				773E51A517B52E060087BC05 /* Supporting Files */,
+			);
+			path = RZPathExporterTests;
+			sourceTree = "<group>";
+		};
+		773E51A517B52E060087BC05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				773E51A617B52E060087BC05 /* RZPathExporterTests-Info.plist */,
+				773E51A717B52E060087BC05 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		773E51B517B52ECC0087BC05 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				773E51B617B52F020087BC05 /* RZEditPathViewController.h */,
+				773E51B717B52F020087BC05 /* RZEditPathViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		773E51B917B53CCF0087BC05 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				773E51BA17B53CEB0087BC05 /* RZZoomingScrollView.h */,
+				773E51BB17B53CEB0087BC05 /* RZZoomingScrollView.m */,
+				773E51BD17B548600087BC05 /* RZDrawPathView.h */,
+				773E51BE17B548600087BC05 /* RZDrawPathView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		773E51C017B568E20087BC05 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				773E51C117B5690E0087BC05 /* NSImage+BestFitGeometry.h */,
+				773E51C217B5690E0087BC05 /* NSImage+BestFitGeometry.m */,
+				773E51C417B57D6D0087BC05 /* GraphicsUtils.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		773E517A17B52E050087BC05 /* RZPathExporter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 773E51AF17B52E060087BC05 /* Build configuration list for PBXNativeTarget "RZPathExporter" */;
+			buildPhases = (
+				773E517717B52E050087BC05 /* Sources */,
+				773E517817B52E050087BC05 /* Frameworks */,
+				773E517917B52E050087BC05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RZPathExporter;
+			productName = RZPathExporter;
+			productReference = 773E517B17B52E050087BC05 /* RZPathExporter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		773E519D17B52E060087BC05 /* RZPathExporterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 773E51B217B52E060087BC05 /* Build configuration list for PBXNativeTarget "RZPathExporterTests" */;
+			buildPhases = (
+				773E519917B52E060087BC05 /* Sources */,
+				773E519A17B52E060087BC05 /* Frameworks */,
+				773E519B17B52E060087BC05 /* Resources */,
+				773E519C17B52E060087BC05 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				773E51A317B52E060087BC05 /* PBXTargetDependency */,
+			);
+			name = RZPathExporterTests;
+			productName = RZPathExporterTests;
+			productReference = 773E519E17B52E060087BC05 /* RZPathExporterTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		773E517317B52E050087BC05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RZ;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Rob Visentin";
+			};
+			buildConfigurationList = 773E517617B52E050087BC05 /* Build configuration list for PBXProject "RZPathExporter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 773E517217B52E050087BC05;
+			productRefGroup = 773E517C17B52E050087BC05 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				773E517A17B52E050087BC05 /* RZPathExporter */,
+				773E519D17B52E060087BC05 /* RZPathExporterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		773E517917B52E050087BC05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773E518917B52E050087BC05 /* InfoPlist.strings in Resources */,
+				773E518F17B52E050087BC05 /* Credits.rtf in Resources */,
+				773E519517B52E050087BC05 /* RZPathDocument.xib in Resources */,
+				773E519817B52E060087BC05 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		773E519B17B52E060087BC05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773E51A917B52E060087BC05 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		773E519C17B52E060087BC05 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		773E517717B52E050087BC05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773E518B17B52E050087BC05 /* main.m in Sources */,
+				773E519217B52E050087BC05 /* RZPathDocument.m in Sources */,
+				773E51B817B52F020087BC05 /* RZEditPathViewController.m in Sources */,
+				773E51BC17B53CEB0087BC05 /* RZZoomingScrollView.m in Sources */,
+				773E51BF17B548600087BC05 /* RZDrawPathView.m in Sources */,
+				773E51C317B5690E0087BC05 /* NSImage+BestFitGeometry.m in Sources */,
+				773E51CA17B586780087BC05 /* RZPathExporterAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		773E519917B52E060087BC05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773E51AC17B52E060087BC05 /* RZPathExporterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		773E51A317B52E060087BC05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 773E517A17B52E050087BC05 /* RZPathExporter */;
+			targetProxy = 773E51A217B52E060087BC05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		773E518717B52E050087BC05 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773E518817B52E050087BC05 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		773E518D17B52E050087BC05 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773E518E17B52E050087BC05 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		773E519317B52E050087BC05 /* RZPathDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773E519417B52E050087BC05 /* en */,
+			);
+			name = RZPathDocument.xib;
+			sourceTree = "<group>";
+		};
+		773E519617B52E060087BC05 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773E519717B52E060087BC05 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		773E51A717B52E060087BC05 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773E51A817B52E060087BC05 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		773E51AD17B52E060087BC05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		773E51AE17B52E060087BC05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		773E51B017B52E060087BC05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RZPathExporter/RZPathExporter-Prefix.pch";
+				INFOPLIST_FILE = "RZPathExporter/RZPathExporter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		773E51B117B52E060087BC05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RZPathExporter/RZPathExporter-Prefix.pch";
+				INFOPLIST_FILE = "RZPathExporter/RZPathExporter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		773E51B317B52E060087BC05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RZPathExporter.app/Contents/MacOS/RZPathExporter";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RZPathExporter/RZPathExporter-Prefix.pch";
+				INFOPLIST_FILE = "RZPathExporterTests/RZPathExporterTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		773E51B417B52E060087BC05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RZPathExporter.app/Contents/MacOS/RZPathExporter";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RZPathExporter/RZPathExporter-Prefix.pch";
+				INFOPLIST_FILE = "RZPathExporterTests/RZPathExporterTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		773E517617B52E050087BC05 /* Build configuration list for PBXProject "RZPathExporter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				773E51AD17B52E060087BC05 /* Debug */,
+				773E51AE17B52E060087BC05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		773E51AF17B52E060087BC05 /* Build configuration list for PBXNativeTarget "RZPathExporter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				773E51B017B52E060087BC05 /* Debug */,
+				773E51B117B52E060087BC05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		773E51B217B52E060087BC05 /* Build configuration list for PBXNativeTarget "RZPathExporterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				773E51B317B52E060087BC05 /* Debug */,
+				773E51B417B52E060087BC05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 773E517317B52E050087BC05 /* Project object */;
+}

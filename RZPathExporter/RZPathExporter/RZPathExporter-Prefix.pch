@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'RZPathExporter' target in the 'RZPathExporter' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
