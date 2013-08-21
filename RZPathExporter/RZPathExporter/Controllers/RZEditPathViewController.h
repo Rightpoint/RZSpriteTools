@@ -17,12 +17,12 @@
 @property (nonatomic, weak) IBOutlet RZDrawPathView *pathView;
 @property (nonatomic, weak) IBOutlet RZZoomingScrollView *scrollView;
 @property (nonatomic, assign) RZEstimationStyle estimationStyle;
+@property (nonatomic, assign) float alphaThreshold;
 
-- (IBAction)closePath:(NSButton *)sender;
-- (IBAction)resetPath:(NSButton *)sender;
-- (IBAction)fitCircle:(NSButton *)sender;
-- (IBAction)fitSquare:(NSButton *)sender;
-- (IBAction)fitCurrent:(NSButton *)sender;
-- (IBAction)radioButtonPressed:(NSButton *)sender;;
+- (void)closePath;
+- (void)resetPath;
+- (void)fitCircle;
+- (void)fitSquare;
+- (void)fitCurrent;
 
 @end

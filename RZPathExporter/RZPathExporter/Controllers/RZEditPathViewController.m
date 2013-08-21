@@ -12,10 +12,31 @@
 
 #define kRZImageAlphaThreshold 0.1f
 
+typedef enum
+{
+    RZPathEditorFitTypeCurrent = 0,
+    RZPathEditorFitTypeSquare,
+    RZPathEditorFitTypeCircle
+} RZPathEditorFitType;
+
 @interface RZEditPathViewController ()
 
+@property (nonatomic, weak) IBOutlet NSSlider *alphaSlider;
 @property (nonatomic, weak) IBOutlet NSButton *overButton;
 @property (nonatomic, weak) IBOutlet NSButton *underButton;
+
+@property (nonatomic, assign) RZPathEditorFitType fitType;
+
+- (IBAction)closePathPressed:(NSButton *)sender;
+- (IBAction)resetPathPressed:(NSButton *)sender;
+- (IBAction)fitCirclePressed:(NSButton *)sender;
+- (IBAction)fitSquarePressed:(NSButton *)sender;
+- (IBAction)fitCurrentPressed:(NSButton *)sender;
+- (IBAction)radioButtonPressed:(NSButton *)sender;;
+
+- (IBAction)alphaChanged:(NSSlider *)slider;
+
+- (void)updatePathView;
 
 - (CGRect)bestFitImageSquare;
 - (CGRect)boundingImageRect;
@@ -24,53 +45,85 @@
 
 @implementation RZEditPathViewController
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    self.estimationStyle = RZEstimationStyleOver;
-}
-
 #pragma mark - public interface
 
-- (void)closePath:(NSButton *)sender
+- (void)setEstimationStyle:(RZEstimationStyle)estimationStyle
+{
+    _estimationStyle = estimationStyle;
+    [self updatePathView];
+}
+
+- (void)setAlphaThreshold:(float)alphaThreshold
+{
+    alphaThreshold = fmaxf(self.alphaSlider.minValue, fminf(alphaThreshold, self.alphaSlider.maxValue));
+    
+    self.alphaSlider.floatValue = alphaThreshold;
+    
+    [self updatePathView];
+}
+
+- (float)alphaThreshold
+{
+    return self.alphaSlider.floatValue;
+}
+
+- (void)closePath
 {
     [self.pathView closePath];
 }
 
-- (void)resetPath:(NSButton *)sender
+- (void)resetPath
 {
     [self.pathView resetPath];
+    self.fitType = RZPathEditorFitTypeCurrent;
 }
 
-- (void)fitCircle:(NSButton *)sender
+- (void)fitSquare
 {
-    self.pathView.path = [NSBezierPath bezierPathWithOvalInRect:[self bestFitImageSquare]];
+    self.fitType = RZPathEditorFitTypeSquare;
 }
 
-- (void)fitSquare:(NSButton *)sender
+- (void)fitCircle
 {
-    self.pathView.path = [NSBezierPath bezierPathWithRect:[self bestFitImageSquare]];
+    self.fitType = RZPathEditorFitTypeCircle;
 }
 
-- (void)fitCurrent:(NSButton *)sender
+- (void)fitCurrent
 {
-    CGRect boundingRect = [self boundingImageRect];
-    CGRect pathBox = [self.pathView.path bounds];
-    
-    CGFloat xRatio = boundingRect.size.width / pathBox.size.width;
-    CGFloat yRatio = boundingRect.size.height / pathBox.size.height;
-    
-    NSAffineTransform *scale = [NSAffineTransform transform];
-    [scale scaleXBy:xRatio yBy:yRatio];
-    
-    CGPoint newOrigin = [scale transformPoint:pathBox.origin];
-    
-    NSAffineTransform *translate = [NSAffineTransform transform];
-    [translate translateXBy:(boundingRect.origin.x - newOrigin.x) yBy:(boundingRect.origin.y - newOrigin.y)];
-    
-    [scale appendTransform:translate];
-    
-    self.pathView.path = [scale transformBezierPath:self.pathView.path];
+    self.fitType = RZPathEditorFitTypeCurrent;
+}
+
+#pragma mark - private interface
+
+- (void)setFitType:(RZPathEditorFitType)fitType
+{
+    _fitType = fitType;
+    [self updatePathView];
+}
+
+- (void)closePathPressed:(NSButton *)sender
+{
+    [self closePath];
+}
+
+- (void)resetPathPressed:(NSButton *)sender
+{
+    [self resetPath];
+}
+
+- (void)fitCirclePressed:(NSButton *)sender
+{
+    [self fitCircle];
+}
+
+- (void)fitSquarePressed:(NSButton *)sender
+{
+    [self fitSquare];
+}
+
+- (void)fitCurrentPressed:(NSButton *)sender
+{
+    [self fitCurrent];
 }
 
 - (void)radioButtonPressed:(NSButton *)sender
@@ -87,17 +140,60 @@
     }
 }
 
-#pragma mark - private interface
+- (void)alphaChanged:(NSSlider *)slider
+{
+    [self updatePathView];
+}
+
+- (void)updatePathView
+{
+    switch (self.fitType)
+    {
+        case RZPathEditorFitTypeCurrent:
+            if (!self.pathView.path.isEmpty)
+            {
+                CGRect boundingRect = [self boundingImageRect];
+                CGRect pathBox = [self.pathView.path bounds];
+                
+                CGFloat xRatio = boundingRect.size.width / pathBox.size.width;
+                CGFloat yRatio = boundingRect.size.height / pathBox.size.height;
+                
+                NSAffineTransform *scale = [NSAffineTransform transform];
+                [scale scaleXBy:xRatio yBy:yRatio];
+                
+                CGPoint newOrigin = [scale transformPoint:pathBox.origin];
+                
+                NSAffineTransform *translate = [NSAffineTransform transform];
+                [translate translateXBy:(boundingRect.origin.x - newOrigin.x) yBy:(boundingRect.origin.y - newOrigin.y)];
+                
+                [scale appendTransform:translate];
+                
+                self.pathView.path = [scale transformBezierPath:self.pathView.path];
+            }
+            break;
+            
+        case RZPathEditorFitTypeSquare:
+            self.pathView.path = [NSBezierPath bezierPathWithRect:[self bestFitImageSquare]];
+            break;
+            
+        case RZPathEditorFitTypeCircle:
+            self.pathView.path = [NSBezierPath bezierPathWithOvalInRect:[self bestFitImageSquare]];
+            break;
+            
+        default:
+            break;
+    }
+}
 
 - (CGRect)bestFitImageSquare
 {
     CGPoint imageViewCenter = CGRectGetCenter(self.imageView.frame);
     CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y - 0.5*self.imageView.image.size.height);
     
-    CGRect square = [self.imageView.image bestFitSquareWithTreshold:kRZImageAlphaThreshold estimationStyle:self.estimationStyle];
+    CGRect square = [self.imageView.image bestFitSquareWithTreshold:self.alphaThreshold estimationStyle:self.estimationStyle];
     square.origin = CGPointMake(imageOrigin.x + square.origin.x, imageOrigin.y + (self.imageView.image.size.height - square.size.height - square.origin.y));
     
-    return square;
+    return CGRectIntegral(square);
 }
 
 - (CGRect)boundingImageRect
@@ -105,10 +201,10 @@
     CGPoint imageViewCenter = CGRectGetCenter(self.imageView.frame);
     CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y - 0.5*self.imageView.image.size.height);
     
-    CGRect square = [self.imageView.image boundingRectWithThreshold:kRZImageAlphaThreshold];
+    CGRect square = [self.imageView.image boundingRectWithThreshold:self.alphaThreshold];
     square.origin = CGPointMake(imageOrigin.x + square.origin.x, imageOrigin.y + (self.imageView.image.size.height - square.size.height - square.origin.y));
     
-    return square;
+    return CGRectIntegral(square);
 }
 
 #pragma mark - RZZoomingScrollViewDelegate

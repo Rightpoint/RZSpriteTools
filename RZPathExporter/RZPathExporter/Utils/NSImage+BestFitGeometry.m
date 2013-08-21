@@ -53,7 +53,7 @@
         {
             size_t index = ((width * y) + x) * bytesPerPixel;
             UInt8 alpha = (UInt8)data[index+3];
-            BOOL pastThreshold = (alpha > thresh);
+            BOOL pastThreshold = (alpha >= thresh);
                                     
             if (pastThreshold)
             {
@@ -69,7 +69,7 @@
         {
             size_t index = ((height * x) + y) * bytesPerPixel;
             UInt8 alpha = (UInt8)data[index+(bytesPerPixel-1)];
-            BOOL pastThreshold = (alpha > thresh);
+            BOOL pastThreshold = (alpha >= thresh);
                         
             if (pastThreshold)
             {

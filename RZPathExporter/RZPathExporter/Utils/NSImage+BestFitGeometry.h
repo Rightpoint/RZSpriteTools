@@ -10,8 +10,8 @@
 
 typedef enum
 {
-    RZEstimationStyleOver = 1, // default
-    RZEstimationStyleUnder,
+    RZEstimationStyleUnder = 0,
+    RZEstimationStyleOver,
 } RZEstimationStyle;
 
 @interface NSImage (BestFitGeometry)
