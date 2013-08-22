@@ -13,7 +13,8 @@
 
 typedef enum
 {
-    RZPathEditorFitTypeCurrent = 0,
+    RZPathEditorFitTypeNone,
+    RZPathEditorFitTypeCurrent,
     RZPathEditorFitTypeSquare,
     RZPathEditorFitTypeCircle,
     RZPathEditorFitTypeCapsule

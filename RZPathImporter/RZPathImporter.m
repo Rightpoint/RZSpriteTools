@@ -178,7 +178,8 @@
                     break;
                     
                 case NSCurveToBezierPathElement:
-                    CGPathAddCurveToPoint(mutablePath, NULL, points[0].x, points[0].y,
+                    CGPathAddCurveToPoint(mutablePath, NULL,
+                                          points[0].x, points[0].y,
                                           points[1].x, points[1].y,
                                           points[2].x, points[2].y);
                     didClosePath = NO;
@@ -191,7 +192,7 @@
             }
         }
         
-        // Be sure the path is closed or Quartz may not do valid hit detection.
+        // be sure the path is closed or Quartz may not do valid hit detection.
         if (!didClosePath)
         {
             CGPathCloseSubpath(mutablePath);
@@ -204,7 +205,7 @@
     return path;
 }
 
-//! private helper to convert CGPath to NSBezierPath
+//! Private helper to convert CGPath to NSBezierPath
 void CGPathApplier(void *info, const CGPathElement *element)
 {
     NSBezierPath *bezierPath = (__bridge NSBezierPath *)info;
