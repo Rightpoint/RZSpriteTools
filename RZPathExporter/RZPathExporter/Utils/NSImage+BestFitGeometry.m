@@ -7,14 +7,13 @@
 //
 
 #import "NSImage+BestFitGeometry.h"
-#import "GraphicsUtils.h"
 
 @implementation NSImage (BestFitGeometry)
 
 - (CGRect)bestFitSquareWithTreshold:(CGFloat)alphaThreshold estimationStyle:(RZEstimationStyle)estimationStyle
 {
     CGRect boundingRect = [self boundingRectWithThreshold:alphaThreshold];
-    CGPoint center = CGRectGetCenter(boundingRect);
+    CGPoint center = CGPointMake(boundingRect.origin.x + 0.5*boundingRect.size.width, boundingRect.origin.y + 0.5*boundingRect.size.height);
     
     CGFloat sideLength = (estimationStyle == RZEstimationStyleOver) ? fmaxf(boundingRect.size.width, boundingRect.size.height) : fminf(boundingRect.size.width, boundingRect.size.height);
     

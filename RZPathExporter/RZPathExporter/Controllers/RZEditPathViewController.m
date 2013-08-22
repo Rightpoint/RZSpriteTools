@@ -10,27 +10,17 @@
 #import "RZPathDocument.h"
 #import "GraphicsUtils.h"
 
-#define kRZImageAlphaThreshold 0.1f
-
-typedef enum
-{
-    RZPathEditorFitTypeCurrent = 0,
-    RZPathEditorFitTypeSquare,
-    RZPathEditorFitTypeCircle
-} RZPathEditorFitType;
-
 @interface RZEditPathViewController ()
 
 @property (nonatomic, weak) IBOutlet NSSlider *alphaSlider;
 @property (nonatomic, weak) IBOutlet NSButton *overButton;
 @property (nonatomic, weak) IBOutlet NSButton *underButton;
 
-@property (nonatomic, assign) RZPathEditorFitType fitType;
-
 - (IBAction)closePathPressed:(NSButton *)sender;
 - (IBAction)resetPathPressed:(NSButton *)sender;
 - (IBAction)fitCirclePressed:(NSButton *)sender;
 - (IBAction)fitSquarePressed:(NSButton *)sender;
+- (IBAction)fitCapsulePressed:(NSButton *)sender;
 - (IBAction)fitCurrentPressed:(NSButton *)sender;
 - (IBAction)radioButtonPressed:(NSButton *)sender;;
 
@@ -88,6 +78,11 @@ typedef enum
     self.fitType = RZPathEditorFitTypeCircle;
 }
 
+- (void)fitCapsule
+{
+    self.fitType = RZPathEditorFitTypeCapsule;
+}
+
 - (void)fitCurrent
 {
     self.fitType = RZPathEditorFitTypeCurrent;
@@ -119,6 +114,11 @@ typedef enum
 - (void)fitSquarePressed:(NSButton *)sender
 {
     [self fitSquare];
+}
+
+- (void)fitCapsulePressed:(NSButton *)sender
+{
+    [self fitCapsule];
 }
 
 - (void)fitCurrentPressed:(NSButton *)sender
@@ -180,6 +180,21 @@ typedef enum
             self.pathView.path = [NSBezierPath bezierPathWithOvalInRect:[self bestFitImageSquare]];
             break;
             
+        case RZPathEditorFitTypeCapsule:
+        {
+            CGRect boundingRect = [self boundingImageRect];
+            
+            if (self.estimationStyle == RZEstimationStyleOver)
+            {
+                CGPoint center = RZRectGetCenter(boundingRect);
+                boundingRect.size.height += boundingRect.size.width; // for semi-circles on either end
+                boundingRect = RZRectCenterOnPoint(boundingRect, center);
+            }
+            
+            self.pathView.path = [NSBezierPath bezierPathWithRoundedRect:NSRectFromCGRect(boundingRect) xRadius:0.5*boundingRect.size.width yRadius:0.5*boundingRect.size.width];
+            break;
+        }
+            
         default:
             break;
     }
@@ -187,7 +202,7 @@ typedef enum
 
 - (CGRect)bestFitImageSquare
 {
-    CGPoint imageViewCenter = CGRectGetCenter(self.imageView.frame);
+    CGPoint imageViewCenter = RZRectGetCenter(self.imageView.frame);
     CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y - 0.5*self.imageView.image.size.height);
     
     CGRect square = [self.imageView.image bestFitSquareWithTreshold:self.alphaThreshold estimationStyle:self.estimationStyle];
@@ -198,7 +213,7 @@ typedef enum
 
 - (CGRect)boundingImageRect
 {
-    CGPoint imageViewCenter = CGRectGetCenter(self.imageView.frame);
+    CGPoint imageViewCenter = RZRectGetCenter(self.imageView.frame);
     CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y - 0.5*self.imageView.image.size.height);
     
     CGRect square = [self.imageView.image boundingRectWithThreshold:self.alphaThreshold];
