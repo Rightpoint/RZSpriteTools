@@ -3,7 +3,7 @@
 //  RZPathExporter
 //
 //  Created by Rob Visentin on 8/9/13.
-//  Copyright (c) 2013 Rob Visentin. All rights reserved.
+//  Copyright (c) 2013 Raizlabs. All rights reserved.
 //
 
 #import "NSImage+BestFitGeometry.h"

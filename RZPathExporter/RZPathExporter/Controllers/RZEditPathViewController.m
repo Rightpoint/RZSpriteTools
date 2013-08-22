@@ -3,7 +3,7 @@
 //  RZPathExporter
 //
 //  Created by Rob Visentin on 8/9/13.
-//  Copyright (c) 2013 Rob Visentin. All rights reserved.
+//  Copyright (c) 2013 Raizlabs. All rights reserved.
 //
 
 #import "RZEditPathViewController.h"
@@ -150,7 +150,7 @@
     switch (self.fitType)
     {
         case RZPathEditorFitTypeCurrent:
-            if (!self.pathView.path.isEmpty)
+            if (![self.pathView.path isEmpty])
             {
                 CGRect boundingRect = [self boundingImageRect];
                 CGRect pathBox = [self.pathView.path bounds];
