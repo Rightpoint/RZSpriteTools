@@ -8,6 +8,20 @@
 
 #import "RZPathDocument.h"
 #import "RZEditPathViewController.h"
+#import "NSBezierPath+Export.h"
+
+// Hack: must match the titles of the Export As.. menu items in MainMenu.xib
+#define kRZPathSaveTypeEncoding @"Encoded Path"
+#define kRZPathSaveTypePlist    @"Property List"
+#define kRZPathSaveTypeBody     @"SKPhysicsBody"
+
+@interface RZPathDocument ()
+
+@property (nonatomic, copy) NSString *saveType;
+
+- (NSString *)extensionForSaveType:(NSString *)saveType;
+
+@end
 
 @implementation RZPathDocument
 
@@ -26,11 +40,30 @@
     
     [self.path transformUsingAffineTransform:translate];
     
-    // TODO: proof of concept, REMOVE ASAP
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.path];
-    self.editPathVC.pathView.path = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSData *saveData = nil;
     
-    return [NSKeyedArchiver archivedDataWithRootObject:self.path];
+    if ([self.saveType isEqualToString:kRZPathSaveTypeEncoding])
+    {
+        saveData = [NSKeyedArchiver archivedDataWithRootObject:self.path];
+    }
+    else if ([self.saveType isEqualToString:kRZPathSaveTypePlist])
+    {
+        self.path = [self.path bezierPathByFlatteningPath];
+        NSArray *points = [self.path allPoints];
+        NSMutableArray *pointStrings = [NSMutableArray arrayWithCapacity:points.count];
+        
+        [points enumerateObjectsUsingBlock:^(NSValue *val, NSUInteger idx, BOOL *stop) {
+            [pointStrings addObject:NSStringFromPoint([val pointValue])];
+        }];
+        
+        return [NSPropertyListSerialization dataWithPropertyList:pointStrings format:NSPropertyListXMLFormat_v1_0 options:0 error:nil];
+    }
+    else if ([self.saveType isEqualToString:kRZPathSaveTypeBody])
+    {
+        // TODO: not yet implemented
+    }
+    
+    return saveData;
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)windowController
@@ -53,12 +86,44 @@
     }
 }
 
+- (void)saveDocumentAs:(id)sender
+{
+    if ([sender isKindOfClass:[NSMenuItem class]])
+    {
+        self.saveType = [sender title];
+    }
+    
+    [super saveDocumentAs:sender];
+}
+
 - (BOOL)prepareSavePanel:(NSSavePanel *)savePanel
 {
-    [savePanel setAllowedFileTypes:@[@"path"]];
+    [savePanel setAllowedFileTypes:@[[self extensionForSaveType:self.saveType]]];
     [savePanel setAllowsOtherFileTypes:YES];
     [savePanel setExtensionHidden:NO];
     return YES;
+}
+
+#pragma mark - private interface
+
+- (NSString *)extensionForSaveType:(NSString *)saveType
+{
+    NSString *extension = @"";
+    
+    if ([self.saveType isEqualToString:kRZPathSaveTypeEncoding])
+    {
+        extension = @"path";
+    }
+    else if ([self.saveType isEqualToString:kRZPathSaveTypePlist])
+    {
+        extension = @"plist";
+    }
+    else if ([self.saveType isEqualToString:kRZPathSaveTypeBody])
+    {
+        extension = @"body";
+    }
+    
+    return extension;
 }
 
 @end

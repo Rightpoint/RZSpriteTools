@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7709FCE117C6587A00CC5002 /* NSBezierPath+Export.m in Sources */ = {isa = PBXBuildFile; fileRef = 7709FCE017C6587A00CC5002 /* NSBezierPath+Export.m */; };
 		773E517F17B52E050087BC05 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773E517E17B52E050087BC05 /* Cocoa.framework */; };
 		773E518917B52E050087BC05 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773E518717B52E050087BC05 /* InfoPlist.strings */; };
 		773E518B17B52E050087BC05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 773E518A17B52E050087BC05 /* main.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7709FCDF17C6587A00CC5002 /* NSBezierPath+Export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+Export.h"; path = "Utils/NSBezierPath+Export.h"; sourceTree = "<group>"; };
+		7709FCE017C6587A00CC5002 /* NSBezierPath+Export.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+Export.m"; path = "Utils/NSBezierPath+Export.m"; sourceTree = "<group>"; };
 		773E517B17B52E050087BC05 /* RZPathExporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RZPathExporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		773E517E17B52E050087BC05 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		773E518117B52E050087BC05 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -202,6 +205,8 @@
 			children = (
 				773E51C117B5690E0087BC05 /* NSImage+BestFitGeometry.h */,
 				773E51C217B5690E0087BC05 /* NSImage+BestFitGeometry.m */,
+				7709FCDF17C6587A00CC5002 /* NSBezierPath+Export.h */,
+				7709FCE017C6587A00CC5002 /* NSBezierPath+Export.m */,
 				773E51C417B57D6D0087BC05 /* GraphicsUtils.h */,
 			);
 			name = Utils;
@@ -321,6 +326,7 @@
 				773E519217B52E050087BC05 /* RZPathDocument.m in Sources */,
 				773E51B817B52F020087BC05 /* RZEditPathViewController.m in Sources */,
 				773E51BC17B53CEB0087BC05 /* RZZoomingScrollView.m in Sources */,
+				7709FCE117C6587A00CC5002 /* NSBezierPath+Export.m in Sources */,
 				773E51BF17B548600087BC05 /* RZDrawPathView.m in Sources */,
 				773E51C317B5690E0087BC05 /* NSImage+BestFitGeometry.m in Sources */,
 				773E51CA17B586780087BC05 /* RZPathExporterAppDelegate.m in Sources */,
@@ -521,6 +527,7 @@
 				773E51B117B52E060087BC05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		773E51B217B52E060087BC05 /* Build configuration list for PBXNativeTarget "RZPathExporterTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +536,7 @@
 				773E51B417B52E060087BC05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
