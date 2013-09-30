@@ -64,7 +64,7 @@
     
     for (int x = 0; x < width; x++)
     {
-        for (size_t y = 0; y < height; y++)
+        for (int y = 0; y < height; y++)
         {
             size_t index = ((height * x) + y) * bytesPerPixel;
             UInt8 alpha = (UInt8)data[index+(bytesPerPixel-1)];
@@ -72,8 +72,8 @@
                         
             if (pastThreshold)
             {
-                startY = MIN(startY, x);
-                endY = MAX(endY, x+1);
+                startY = MIN(startY, y);
+                endY = MAX(endY, y+1);
             }
         }
     }
