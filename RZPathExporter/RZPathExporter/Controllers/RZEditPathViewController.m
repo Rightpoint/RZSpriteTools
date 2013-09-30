@@ -22,7 +22,8 @@
 - (IBAction)fitSquarePressed:(NSButton *)sender;
 - (IBAction)fitCapsulePressed:(NSButton *)sender;
 - (IBAction)fitCurrentPressed:(NSButton *)sender;
-- (IBAction)radioButtonPressed:(NSButton *)sender;;
+- (IBAction)radioButtonPressed:(NSButton *)sender;
+- (IBAction)flattenPressed:(NSButton *)sender;
 
 - (IBAction)alphaChanged:(NSSlider *)slider;
 
@@ -88,6 +89,11 @@
     self.fitType = RZPathEditorFitTypeCurrent;
 }
 
+- (void)flattenToVertexCount:(NSUInteger)vetices
+{
+    
+}
+
 #pragma mark - private interface
 
 - (void)setFitType:(RZPathEditorFitType)fitType
@@ -137,6 +143,27 @@
     {
         [self.overButton setState:NSOffState];
         self.estimationStyle = RZEstimationStyleUnder;
+    }
+}
+
+- (void)flattenPressed:(NSButton *)sender
+{
+    NSBezierPath *flatPath = [self.pathView.path bezierPathByFlatteningPath];
+    
+    NSAlert *alert = [NSAlert alertWithMessageText: @"Enter number of vertices:"
+                                     defaultButton:@"Flatten"
+                                   alternateButton:@"Cancel"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"After flattening, path will have given number of vertices"];
+    
+    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)];
+    [input setStringValue:[NSString stringWithFormat:@"%li", (long)flatPath.elementCount]];
+    [alert setAccessoryView:input];
+    NSInteger button = [alert runModal];
+    if (button == NSAlertDefaultReturn)
+    {
+        [input validateEditing];
+        NSLog(@"User entered: %@", [input stringValue]);
     }
 }
 

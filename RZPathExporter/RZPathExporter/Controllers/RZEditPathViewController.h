@@ -35,5 +35,6 @@ typedef enum
 - (void)fitSquare;
 - (void)fitCapsule;
 - (void)fitCurrent;
+- (void)flattenToVertexCount:(NSUInteger)vetices;
 
 @end
