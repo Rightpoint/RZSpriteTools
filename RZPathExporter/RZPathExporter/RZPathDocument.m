@@ -76,12 +76,25 @@
 {
     if ([typeName isEqualToString:@"png"])
     {
-        self.image = [[NSImage alloc] initWithData:data];
+        NSImage *image = [[NSImage alloc] initWithData:data];
+    
+        CGImageRef cgImage = [image CGImageForProposedRect:NULL context:nil hints:nil];
+        size_t width = CGImageGetWidth(cgImage);
+        size_t height = CGImageGetHeight(cgImage);
+        
+        // resize the image to pixel width and height
+        [image setSize:NSSizeFromCGSize(CGSizeMake(width, height))];
+        
+        self.image = image;
+        
         return YES;
     }
     else
     {
-        *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadUnsupportedSchemeError userInfo:nil];
+        if (outError)
+        {
+            *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadUnsupportedSchemeError userInfo:nil];
+        }
         return NO;
     }
 }
