@@ -123,7 +123,6 @@
                 }
             }
         }];
-        CGPathCloseSubpath(path);
     }
     
     if (isMutable)
