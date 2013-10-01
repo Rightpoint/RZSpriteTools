@@ -229,11 +229,11 @@
 
 - (CGRect)bestFitImageSquare
 {
-    CGPoint imageViewCenter = RZRectGetCenter(self.imageView.frame);
-    CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y - 0.5*self.imageView.image.size.height);
+    CGPoint imageViewCenter = RZRectGetCenter(self.imageView.bounds);
+    CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y + 0.5*self.imageView.image.size.height);
     
     CGRect square = [self.imageView.image bestFitSquareWithTreshold:self.alphaThreshold estimationStyle:self.estimationStyle];
-    square.origin = CGPointMake(imageOrigin.x + square.origin.x, imageOrigin.y + (self.imageView.image.size.height - square.size.height - square.origin.y));
+    square.origin = CGPointMake(imageOrigin.x + square.origin.x, imageOrigin.y - square.size.height - square.origin.y);
     
     return CGRectIntegral(square);
 }
@@ -241,12 +241,12 @@
 - (CGRect)boundingImageRect
 {
     CGPoint imageViewCenter = RZRectGetCenter(self.imageView.frame);
-    CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y - 0.5*self.imageView.image.size.height);
+    CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y + 0.5*self.imageView.image.size.height);
     
-    CGRect square = [self.imageView.image boundingRectWithThreshold:self.alphaThreshold];
-    square.origin = CGPointMake(imageOrigin.x + square.origin.x, imageOrigin.y + (self.imageView.image.size.height - square.size.height - square.origin.y));
+    CGRect rect = [self.imageView.image boundingRectWithThreshold:self.alphaThreshold];
+    rect.origin = CGPointMake(imageOrigin.x + rect.origin.x, imageOrigin.y - rect.size.height - rect.origin.y);
     
-    return CGRectIntegral(square);
+    return CGRectIntegral(rect);
 }
 
 #pragma mark - RZZoomingScrollViewDelegate

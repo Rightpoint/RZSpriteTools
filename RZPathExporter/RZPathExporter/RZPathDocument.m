@@ -39,7 +39,7 @@
     [translate translateXBy:-boundingBox.origin.x yBy:-boundingBox.origin.y];
     
     [self.path transformUsingAffineTransform:translate];
-    
+        
     NSData *saveData = nil;
     
     if ([self.saveType isEqualToString:kRZPathSaveTypeEncoding])
@@ -56,7 +56,7 @@
             [pointStrings addObject:NSStringFromPoint([val pointValue])];
         }];
         
-        return [NSPropertyListSerialization dataWithPropertyList:pointStrings format:NSPropertyListXMLFormat_v1_0 options:0 error:nil];
+        saveData = [NSPropertyListSerialization dataWithPropertyList:pointStrings format:NSPropertyListXMLFormat_v1_0 options:0 error:nil];
     }
     else if ([self.saveType isEqualToString:kRZPathSaveTypeBody])
     {

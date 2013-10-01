@@ -51,7 +51,7 @@
         for (int x = 0; x < width; x++)
         {
             size_t index = ((width * y) + x) * bytesPerPixel;
-            UInt8 alpha = (UInt8)data[index+3];
+            UInt8 alpha = (UInt8)data[index+(bytesPerPixel-1)];
             BOOL pastThreshold = (alpha >= thresh);
                                     
             if (pastThreshold)
@@ -66,7 +66,7 @@
     {
         for (int y = 0; y < height; y++)
         {
-            size_t index = ((height * x) + y) * bytesPerPixel;
+            size_t index = ((width * y) + x) * bytesPerPixel;
             UInt8 alpha = (UInt8)data[index+(bytesPerPixel-1)];
             BOOL pastThreshold = (alpha >= thresh);
                         
