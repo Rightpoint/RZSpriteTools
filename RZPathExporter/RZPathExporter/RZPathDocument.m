@@ -9,6 +9,7 @@
 #import "RZPathDocument.h"
 #import "RZEditPathViewController.h"
 #import "NSBezierPath+Export.h"
+#import "NSImage+BestFitGeometry.h"
 
 // Hack: must match the titles of the Export As.. menu items in MainMenu.xib
 #define kRZPathSaveTypeEncoding @"Encoded Path"
@@ -32,14 +33,20 @@
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
-    self.path = self.editPathVC.pathView.path;
+    self.path = [self.editPathVC.pathView.path copy];
     
-    CGRect boundingBox = [self.path bounds];
+    CGPoint imageOrigin = [self.editPathVC imageOrigin];
+    imageOrigin.y -= self.image.size.height;
+    
     NSAffineTransform *translate = [NSAffineTransform transform];
-    [translate translateXBy:-boundingBox.origin.x yBy:-boundingBox.origin.y];
+    [translate translateXBy:-imageOrigin.x - 0.5*self.image.size.width yBy:-imageOrigin.y - 0.5*self.image.size.height];
+    
+    NSAffineTransform *scale = [NSAffineTransform transform];
+    [scale scaleBy:0.5];
+    [translate appendTransform:scale];
     
     [self.path transformUsingAffineTransform:translate];
-        
+    
     NSData *saveData = nil;
     
     if ([self.saveType isEqualToString:kRZPathSaveTypeEncoding])

@@ -102,6 +102,12 @@
     [self updatePathView];
 }
 
+- (CGPoint)imageOrigin
+{
+    CGPoint imageViewCenter = RZRectGetCenter(self.imageView.bounds);
+    return CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y + 0.5*self.imageView.image.size.height);
+}
+
 - (void)closePathPressed:(NSButton *)sender
 {
     [self closePath];
@@ -229,8 +235,7 @@
 
 - (CGRect)bestFitImageSquare
 {
-    CGPoint imageViewCenter = RZRectGetCenter(self.imageView.bounds);
-    CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y + 0.5*self.imageView.image.size.height);
+    CGPoint imageOrigin = [self imageOrigin];
     
     CGRect square = [self.imageView.image bestFitSquareWithTreshold:self.alphaThreshold estimationStyle:self.estimationStyle];
     square.origin = CGPointMake(imageOrigin.x + square.origin.x, imageOrigin.y - square.size.height - square.origin.y);
@@ -240,8 +245,7 @@
 
 - (CGRect)boundingImageRect
 {
-    CGPoint imageViewCenter = RZRectGetCenter(self.imageView.frame);
-    CGPoint imageOrigin = CGPointMake(imageViewCenter.x - 0.5*self.imageView.image.size.width, imageViewCenter.y + 0.5*self.imageView.image.size.height);
+    CGPoint imageOrigin = [self imageOrigin];
     
     CGRect rect = [self.imageView.image boundingRectWithThreshold:self.alphaThreshold];
     rect.origin = CGPointMake(imageOrigin.x + rect.origin.x, imageOrigin.y - rect.size.height - rect.origin.y);

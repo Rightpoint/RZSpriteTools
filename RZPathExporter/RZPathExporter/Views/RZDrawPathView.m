@@ -8,6 +8,12 @@
 
 #import "RZDrawPathView.h"
 
+@interface RZDrawPathView ()
+
+@property (nonatomic, assign, getter = isDragging) BOOL dragging;
+
+@end
+
 @implementation RZDrawPathView
 
 @synthesize path = _path;
@@ -50,6 +56,12 @@
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
+    if (self.isDragging)
+    {
+        self.dragging = NO;
+        return;
+    }
+    
     NSPoint loc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     
     if ([self.path isEmpty])
@@ -61,6 +73,30 @@
         [self.path lineToPoint:loc];
     }
     
+    [self setNeedsDisplay:YES];
+}
+
+- (void)scrollWheel:(NSEvent *)theEvent
+{
+    [super scrollWheel:theEvent];
+    
+    CGFloat scale = [theEvent scrollingDeltaY] < 0 ? 0.95f : 1.05f;
+    
+    NSAffineTransform *transform = [NSAffineTransform transform];
+    [transform scaleBy:scale];
+    
+    [self.path transformUsingAffineTransform:transform];
+    [self setNeedsDisplay:YES];
+}
+
+- (void)mouseDragged:(NSEvent *)theEvent
+{
+    self.dragging = YES;
+    
+    NSAffineTransform *transform = [NSAffineTransform transform];
+    [transform translateXBy:[theEvent deltaX] yBy:-[theEvent deltaY]];
+    
+    [self.path transformUsingAffineTransform:transform];
     [self setNeedsDisplay:YES];
 }
 

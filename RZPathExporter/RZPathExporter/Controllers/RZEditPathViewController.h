@@ -29,6 +29,8 @@ typedef enum
 @property (nonatomic, assign) RZPathEditorFitType fitType;
 @property (nonatomic, assign) float alphaThreshold;
 
+- (CGPoint)imageOrigin;
+
 - (void)closePath;
 - (void)resetPath;
 - (void)fitCircle;

@@ -12,7 +12,7 @@
 
 - (void)scrollWheel:(NSEvent *)theEvent
 {
-    CGFloat scale = [theEvent scrollingDeltaY] < 0 ? 1.05f : 0.95f;
+    CGFloat scale = [theEvent scrollingDeltaY] < 0 ? 0.95f : 1.05f;
     [self setMagnification:self.magnification*scale];
   
     [self.horizontalScroller setHidden:(self.contentView.bounds.size.width > self.bounds.size.width)];
